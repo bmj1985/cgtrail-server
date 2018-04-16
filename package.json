@@ -1,0 +1,32 @@
+{
+  "name": "cgtrail-server",
+  "version": "0.0.1",
+  "description": "Server side code for C&G Trail Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmj1985/cgtrail-server.git"
+  },
+  "author": "Brandon Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bmj1985/cgtrail-server/issues"
+  },
+  "homepage": "https://github.com/bmj1985/cgtrail-server#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.15",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.0",
+    "nodemon": "^1.17.3",
+    "supertest": "^3.0.0"
+  }
+}
