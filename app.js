@@ -1,4 +1,5 @@
 const express = require('express')
+const mongoose = require('mongoose')
 
 const app = express()
 
@@ -10,9 +11,17 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.use('/businesses', require('./routes/businesses'))
+app.use('/api/alpha/businesses', require('./routes/routes'))
+
+mongoose.Promise = global.Promise
+if (process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost/businesses')
+}
 
 app
+  .use((error, request, response, next) => {
+    response.status(422).send(error.message)
+  })
   .use((request, response, next) => {
     response.status(404).send()
   })

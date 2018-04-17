@@ -1,5 +1,5 @@
 const assert = require('assert')
-const Business = require('../src/businesses')
+const Business = require('../models/businesses')
 
 describe('Creating records', () => {
   it('Saves a business', done => {

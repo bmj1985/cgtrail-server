@@ -9,8 +9,9 @@ before((done) => {
     })
 })
 
-beforeEach((done) => {
-  mongoose.connection.collections.businesses.drop(() => {
-    done()
-  })
+beforeEach(done => {
+  const { businesses} = mongoose.connection.collections
+  businesses.drop()
+    .then(() => done())
+    .catch(() => done())
 })

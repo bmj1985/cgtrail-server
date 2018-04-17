@@ -1,11 +1,40 @@
-const assert = require('assert')
-const Business = require('../models/businesses')
+const Business = require('../models/Businesses')
 
-describe('It reads businesses out of the database', () => {
-  let sazza, greatDivide, milkMarket
+module.exports = {
+  index (request, response, next) {
+    const businessProps = request.body
+    Business.find(businessProps)
+      .then(businesses => response.send(businesses))
+      .catch(next)
+  },
+  create (request, response, next) {
+    const businessProps = request.body
 
-  beforeEach((done) => {
-    sazza = new Business({
+    Business.create(businessProps)
+      .then(business => response.send(business))
+      .catch(next)
+  },
+  edit (request, response, next) {
+    const businessId = request.params.id
+    const businessProps = request.body
+
+    Business.findByIdAndUpdate({ _id: businessId }, businessProps)
+      .then(() => Business.findById({ _id: id }))
+      .then(business => response.send(business))
+      .catch(next)
+  },
+  delete (request, response, next) {
+    const businessId = request.params.id
+
+    Business.findByIdAndRemove({ _id: businessId })
+      .then(business => response.status(204).send(business))
+      .catch(next)
+  },
+  deleteCollection () {
+    Business.remove()
+  },
+  seedBusinesses: (request, response) => {
+    const businesses = [{
       BusinessName: 'Sazza Pizza + Salads',
       Location: [
         {
@@ -43,8 +72,8 @@ describe('It reads businesses out of the database', () => {
       Primary_Image_Url: '',
       Image2_Url: '',
       Logo_Url: ''
-    })
-    greatDivide = new Business({
+    },
+    {
       BusinessName: 'Great Divide Brewing Co.',
       Location: [
         {
@@ -70,8 +99,8 @@ describe('It reads businesses out of the database', () => {
       Primary_Image_Url: '',
       Image2_Url: '',
       Logo_Url: ''
-    })
-    milkMarket = new Business({
+    },
+    {
       BusinessName: 'Milk Market',
       Location: [
         {
@@ -97,38 +126,12 @@ describe('It reads businesses out of the database', () => {
       Primary_Image_Url: '',
       Image2_Url: '',
       Logo_Url: ''
-    })
+    }]
 
-    Promise.all([sazza.save(), greatDivide.save(), milkMarket.save()])
-      .then(() => done())
-  })
-
-  it('Should find all businesses with a Business name of Milk Market', (done) => {
-    Business.find({ BusinessName: 'Milk Market' })
-      .then((businesses) => {
-        assert(businesses[0]._id.toString() === milkMarket._id.toString())
-        done()
-      })
-  })
-
-  it('Should find a business with a particular id', (done) => {
-    Business.findOne({ _id: milkMarket._id })
-      .then((business) => {
-        assert(business.BusinessName === 'Milk Market')
-        done()
-      })
-  })
-
-  it('Should be able to skip and limit the result set', (done) => {
-    Business.find({})
-      .sort({ BusinessName: 1 })
-      .skip(1)
-      .limit(2)
-      .then((businesses) => {
-        assert(businesses.length === 2)
-        assert(businesses[0].BusinessName === 'Milk Market')
-        assert(businesses[1].BusinessName === 'Sazza Pizza + Salads')
-        done()
-      })
-  })
-})
+    for (business of businesses) {
+      const newBusiness = new Business(business)
+      newBusiness.save()
+    }
+    response.send('Database seeded!')
+  }
+}
