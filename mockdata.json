@@ -1,44 +1,70 @@
 const businesses = [
+  
   {
-    "id": 1,
-    "BusinessName": "Sazza Pizza + Salads",
-    "Location": [{
-        "name": "Stanley Marketplace",
-        "Coordinates": "39.752925, -104.877514",
-        "PhysicalAddress": "2501 N. Dallas Way – Unit 104 Aurora, CO. 80010", 
+    BusinessName: "Sazza Pizza + Salads",
+    Location: [{
+        Name: "Stanley Marketplace",
+        Coordinates: "39.75268, -104.87745",
+        PhysicalAddress: {
+            StreetAddress: "2501 N. Dallas Way",
+            SuiteApt: "Unit 104",
+            City: "Aurora",
+            State: "CO",
+            ZipCode: "80010"
+        },
+        PhoneNumber: "303-797-3048"
         },
         {
-        "name": "Stanley Marketplace",
-        "Coordinates": "39.752925, -104.877514",
-        "PhysicalAddress": "2501 N. Dallas Way – Unit 104 Aurora, CO. 80010", 
+        Name: "Cherry Hills Marketplace",
+        Coordinates: "39.60936, -104.958094",
+        PhysicalAddress: {
+            StreetAddress: "2500 East Orchard Road E",
+            SuiteApt: "Unit 104",
+            City: "Greenwood Village",
+            State: "CO",
+            ZipCode: "80121"
         },
-        {
-        "name": "Stanley Marketplace",
-        "Coordinates": "39.752925, -104.877514",
-        "PhysicalAddress": "2501 N. Dallas Way – Unit 104 Aurora, CO. 80010", 
-        }],
-    "AlumName": "Jeff Rogoff",
-    "Title": "Owner",
-    "Class": 1993,
-    "Degree": "BA",
-    "Field": "Psychology",
-    "Url": "http://sazzarestaurant.com"
+        PhoneNumber: "303-797-2992"
+        }
+      ],
+    AlumName: "Jeff Rogoff",
+    Title: "Owner",
+    Class: 1993,
+    Degree: "BA",
+    Field: "Psychology",`
+    Url: "http://sazzarestaurant.com",
+    Description: "",
+    Primary_Image_Url: "",
+    Image2_Url: "",
+    Logo_Url: "",
+    
   },
   {
-    "id": 2,
-    "BusinessName": "Great Divide Brewing Co.",
+    "__id": 2,
+    "BusinessName": "Great Div_ide Brewing Co.",
     "Location": "Ballpark",
+    Location: [{
+        Name: "Ballpark",
+        Coordinates: "39.754039, -104.988496",
+        PhysicalAddress: {
+            StreetAddress: "2201 Arapahoe St",
+            SuiteApt: null,
+            City: "Denver",
+            State: "CO",
+            ZipCode: "80205"
+        },
+        PhoneNumber: ""
+        }
+      ]
     "AlumName": "Brian Dunn",
     "Title": "CEO & Founder",
     "Class": 1992,
     "Degree": "MEPM",
     "Field": "Environmental Policy & Management",
-    "PhysicalAddress": "2201 Arapahoe St, Denver, CO 80205",
-    "Coordinates": "39.754039, -104.988496",
-    "Url": "https://greatdivide.com"
+    "Url": "https://greatdiv_ide.com"
   },
   {
-    "id": 3,
+    "_id": 3,
     "BusinessName": "Milk Market",
     "Location": "",
     "AlumName": "Frank Bonnano",
