@@ -1,4 +1,4 @@
-const Business = require('../models/Businesses')
+const Business = require('../models/businesses')
 
 module.exports = {
   index (request, response, next) {
