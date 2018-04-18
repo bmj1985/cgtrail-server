@@ -14,7 +14,7 @@ app.use(cors())
 app.use('/api/alpha/businesses', require('./routes/routes'))
 
 const MONGODB = process.env.MONGODB_URI
-mongoose.connect(mongoDB)
+mongoose.connect(MONGODB)
 mongoose.Promise = global.Promise
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
