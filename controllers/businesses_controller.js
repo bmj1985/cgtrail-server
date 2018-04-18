@@ -30,9 +30,6 @@ module.exports = {
       .then(business => response.status(204).send(business))
       .catch(next)
   },
-  deleteCollection () {
-    Business.remove()
-  },
   seedBusinesses: (request, response) => {
     const businesses = [{
       BusinessName: 'Sazza Pizza + Salads',
