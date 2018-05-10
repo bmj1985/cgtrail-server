@@ -30,7 +30,6 @@ module.exports = {
     Business.findByIdAndUpdate({ _id: businessId }, businessProps)
       .then(() => Business.findById({ _id: businessId }))
       .then(business => {
-        console.log(business)
         response.send(business)
       })
       .catch(next)
