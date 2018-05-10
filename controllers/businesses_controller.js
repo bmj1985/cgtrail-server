@@ -1,11 +1,20 @@
 const Business = require('../models/businesses')
 
 module.exports = {
-  index (request, response, next) {
+  list (request, response, next) {
     const businessProps = request.body
     Business.find(businessProps)
-      .then(businesses => response.send(businesses))
+      .then(businesses => {
+        response.send(businesses)
+      })
       .catch(next)
+  },
+  read (request, response, next) {
+    const businessId = request.params.id
+    Business.findById({_id: businessId})
+      .then(businesses => {
+        response.send(businesses)
+      })
   },
   create (request, response, next) {
     const businessProps = request.body
@@ -19,8 +28,11 @@ module.exports = {
     const businessProps = request.body
 
     Business.findByIdAndUpdate({ _id: businessId }, businessProps)
-      .then(() => Business.findById({ _id: id }))
-      .then(business => response.send(business))
+      .then(() => Business.findById({ _id: businessId }))
+      .then(business => {
+        console.log(business)
+        response.send(business)
+      })
       .catch(next)
   },
   delete (request, response, next) {
@@ -31,6 +43,9 @@ module.exports = {
       .catch(next)
   },
   seedBusinesses: (request, response) => {
+    Business.remove({}, function (err) {
+      console.log('collection removed')
+    })
     const businesses = [{
       BusinessName: 'Sazza Pizza + Salads',
       Location: [
